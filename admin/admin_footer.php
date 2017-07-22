@@ -2,7 +2,7 @@
 /**
  * ****************************************************************************
  * boox - MODULE FOR XOOPS
- * Copyright (c) Herv� Thouzard (http://www.herve-thouzard.com)
+ * Copyright (c) Hervé Thouzard (http://www.herve-thouzard.com)
  *
  * You may not change or alter any portion of this comment or credits
  * of supporting developers from this source code or any supporting source code
@@ -11,20 +11,16 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @copyright       Herv� Thouzard (http://www.herve-thouzard.com)
+ * @copyright       Hervé Thouzard (http://www.herve-thouzard.com)
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU Public License
  * @package         boox
- * @author 			Herv� Thouzard (http://www.herve-thouzard.com)
+ * @author          Hervé Thouzard (http://www.herve-thouzard.com)
  *
- * Version : $Id:
+ * Version :
  * ****************************************************************************
  */
 
-echo "<div class='adminfooter'>\n"
-    ."  <div style='text-align: center;'>\n"
-    ."    <a href='http://www.xoops.org' rel='external'><img src='{$pathIcon32}/xoopsmicrobutton.gif' alt='XOOPS' title='XOOPS'></a>\n"
-    ."  </div>\n"
-    ."  " . _AM_MODULEADMIN_ADMIN_FOOTER . "\n"
-    ."</div>";
+$pathIcon32 = \Xmf\Module\Admin::iconUrl('', 32);
+echo "<div class='adminfooter'>\n" . "  <div style='text-align: center;'>\n" . "    <a href='https://xoops.org' rel='external'><img src='{$pathIcon32}/xoopsmicrobutton.gif' alt='XOOPS' title='XOOPS'></a>\n" . "  </div>\n" . '  ' . _AM_MODULEADMIN_ADMIN_FOOTER . "\n" . '</div>';
 
 xoops_cp_footer();

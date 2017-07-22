@@ -2,7 +2,7 @@
 /**
  * ****************************************************************************
  * boox - MODULE FOR XOOPS
- * Copyright (c) Herv� Thouzard (http://www.herve-thouzard.com)
+ * Copyright (c) Hervé Thouzard (http://www.herve-thouzard.com)
  *
  * You may not change or alter any portion of this comment or credits
  * of supporting developers from this source code or any supporting source code
@@ -11,35 +11,39 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @copyright       Herv� Thouzard (http://www.herve-thouzard.com)
+ * @copyright       Hervé Thouzard (http://www.herve-thouzard.com)
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU Public License
  * @package         boox
- * @author 			Herv� Thouzard (http://www.herve-thouzard.com)
+ * @author          Hervé Thouzard (http://www.herve-thouzard.com)
  *
- * Version : $Id:
+ * Version :
  * ****************************************************************************
  */
 
-defined("XOOPS_ROOT_PATH") or die("XOOPS root path not defined");
+$moduleDirName = basename(dirname(__DIR__));
 
-$dirname = basename(dirname(dirname(__FILE__)));
-$module_handler = xoops_gethandler('module');
-$module = $module_handler->getByDirname($dirname);
-$pathIcon32 = $module->getInfo('icons32');
+if (false !== ($moduleHelper = Xmf\Module\Helper::getHelper($moduleDirName))) {
+} else {
+    $moduleHelper = Xmf\Module\Helper::getHelper('system');
+}
+$adminObject = \Xmf\Module\Admin::getInstance();
 
-xoops_loadLanguage('admin', $dirname);
+$pathIcon32 = \Xmf\Module\Admin::menuIconPath('');
+//$pathModIcon32 = $moduleHelper->getModule()->getInfo('modicons32');
 
-$i = 0;
-$adminmenu[$i]["title"] = _MI_BOOX_MENU_00;
-$adminmenu[$i]["link"] = 'admin/index.php';
-$adminmenu[$i]["icon"] = $pathIcon32.'/home.png';
+$moduleHelper->loadLanguage('modinfo');
 
-$i++;
-$adminmenu[$i]["title"] = _MI_BOOX_MENU_01;
-$adminmenu[$i]["link"] = 'admin/main.php';
-$adminmenu[$i]["icon"] = $pathIcon32.'/manage.png';
+$i                      = 0;
+$adminmenu[$i]['title'] = _MI_BOOX_MENU_00;
+$adminmenu[$i]['link']  = 'admin/index.php';
+$adminmenu[$i]['icon']  = $pathIcon32 . '/home.png';
 
-$i++;
-$adminmenu[$i]["title"] = _MI_BOOX_ADMIN_ABOUT;
-$adminmenu[$i]["link"] = 'admin/about.php';
-$adminmenu[$i]["icon"] = $pathIcon32.'/about.png';
+++$i;
+$adminmenu[$i]['title'] = _MI_BOOX_MENU_01;
+$adminmenu[$i]['link']  = 'admin/main.php';
+$adminmenu[$i]['icon']  = $pathIcon32 . '/manage.png';
+
+++$i;
+$adminmenu[$i]['title'] = _MI_BOOX_ADMIN_ABOUT;
+$adminmenu[$i]['link']  = 'admin/about.php';
+$adminmenu[$i]['icon']  = $pathIcon32 . '/about.png';

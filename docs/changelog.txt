@@ -1,17 +1,28 @@
+1.73 Beta 1        2014-04-23
+=================================
+- moved all images, CSS, and JS files to /assets (mamba)
+- renamed .html Smarty templates to .tpl (mamba)
+
 ============================
-Version 1.71 2011/06/30:
+1.72               2014-03-12
+============================
+- Small code changes (mamba)
+- set default directory to /uploads/boox
+
+============================
+1.71            2011/06/30:
 ============================
 - Conversion to XOOPS 2.5.0 GUI (mamba)
 - converting to dynamic Editor selection
 
 ============================
-Version 1.70 2011/12/12:
+1.70            2011/12/12:
 ============================
 - The module requires at least Xoops 2.3
 - Better support for Xoops 2.3 (and up) editors
 
 ============================
-Version 1.60 2006/9/8:
+1.60            2006/9/8:
 ============================
 - Better support of Xoops 2.3
 - Addition of support for the TinyMCEeditor
@@ -19,6 +30,6 @@ Version 1.60 2006/9/8:
 - Translations available in UTF8 (French & English)
 
 ============================
-Version 1.40 2006/9/8:
+1.40            2006/9/8:
 ============================
 - original release (hervet)

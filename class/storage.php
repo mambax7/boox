@@ -2,7 +2,7 @@
 /**
  * ****************************************************************************
  * boox - MODULE FOR XOOPS
- * Copyright (c) Hervé Thouzard (http://www.herve-thouzard.com)
+ * Copyright (c) HervÃ© Thouzard (http://www.herve-thouzard.com)
  *
  * You may not change or alter any portion of this comment or credits
  * of supporting developers from this source code or any supporting source code
@@ -11,64 +11,65 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @copyright       Hervé Thouzard (http://www.herve-thouzard.com)
+ * @copyright       HervÃ© Thouzard (http://www.herve-thouzard.com)
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU Public License
  * @package         boox
- * @author 			Hervé Thouzard (http://www.herve-thouzard.com)
+ * @author          HervÃ© Thouzard (http://www.herve-thouzard.com)
  *
- * Version : $Id:
  * ****************************************************************************
  */
 
-if (!defined('XOOPS_ROOT_PATH')) {
-    die('XOOPS root path not defined');
-}
+// defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
 
+/**
+ * Class boox_storage
+ */
 class boox_storage
 {
-    var $files;        // Holds files
-    var $filename;    // Name of the file wich contains all the other files
+    public $files;        // Holds files
+    public $filename;    // Name of the file wich contains all the other files
 
-    function boox_storage()
+    public function __construct()
     {
-        $this->filename = XOOPS_UPLOAD_PATH.'/boox_files.php';
+        $this->filename = XOOPS_UPLOAD_PATH . '/boox_files.php';
     }
 
     /**
      * Get all the files
      */
-    function getAllFiles()
+    public function getAllFiles()
     {
-        $ret = $tbl_files_list = array();
+        $ret  = $tbl_files_list = array();
         $myts = MyTextSanitizer::getInstance();
-        if(file_exists($this->filename)) {
-            include_once $this->filename;
-            foreach($tbl_files_list as $onefile) {
-                if(xoops_trim($onefile)!='') {
-                    $onefile=$myts->htmlSpecialChars($onefile);
-                    $ret[$onefile]=$onefile;
+        if (file_exists($this->filename)) {
+            require_once $this->filename;
+            foreach ($tbl_files_list as $onefile) {
+                if (xoops_trim($onefile) != '') {
+                    $onefile       = $myts->htmlSpecialChars($onefile);
+                    $ret[$onefile] = $onefile;
                 }
             }
         }
         asort($ret);
-        $this->files=$ret;
+        $this->files = $ret;
 
         return $ret;
     }
 
     /**
      * Remove one or many files from the list
+     * @param $file
      */
-    function delete($file)
+    public function delete($file)
     {
-        if(is_array($file)) {
-            foreach($file as $onefile) {
-                if(isset($this->files[$onefile])) {
+        if (is_array($file)) {
+            foreach ($file as $onefile) {
+                if (isset($this->files[$onefile])) {
                     unset($this->files[$onefile]);
                 }
             }
         } else {
-            if(isset($this->files[$file])) {
+            if (isset($this->files[$file])) {
                 unset($this->files[$file]);
             }
         }
@@ -76,38 +77,38 @@ class boox_storage
 
     /**
      * Add one or many Files
+     * @param $file
      */
-    function addfiles($file)
+    public function addfiles($file)
     {
         $myts = MyTextSanitizer::getInstance();
-        if(is_array($file)) {
-            foreach($file as $onefile) {
-                $onefile=xoops_trim($myts->htmlSpecialChars($onefile));
-                $this->files[$onefile]=$onefile;
+        if (is_array($file)) {
+            foreach ($file as $onefile) {
+                $onefile               = xoops_trim($myts->htmlSpecialChars($onefile));
+                $this->files[$onefile] = $onefile;
             }
         } else {
-            $file=xoops_trim($myts->htmlSpecialChars($file));
-            $this->files[$file]=$file;
+            $file               = xoops_trim($myts->htmlSpecialChars($file));
+            $this->files[$file] = $file;
         }
-
     }
 
     /**
      * Save files
      */
-    function store()
+    public function store()
     {
-        if(file_exists($this->filename)) {
+        if (file_exists($this->filename)) {
             unlink($this->filename);
         }
-        $fd = fopen($this->filename,'w') or die('Error unable to create storage files list');
-        fputs($fd,"<?php\n");
-        fputs($fd,'$tbl_files_list = array('."\n");
-        foreach($this->files as $onefile) {
-            fputs($fd,"\"".$onefile."\",\n");
+        $fd = fopen($this->filename, 'w') || die('Error unable to create storage files list');
+        fwrite($fd, "<?php\n");
+        fwrite($fd, '$tbl_files_list = array(' . "\n");
+        foreach ($this->files as $onefile) {
+            fwrite($fd, "\"" . $onefile . "\",\n");
         }
-        fputs($fd,"'');\n");
-        fputs($fd,"?>\n");
+        fwrite($fd, "'');\n");
+        fwrite($fd, "?>\n");
         fclose($fd);
     }
 }

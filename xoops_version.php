@@ -14,52 +14,50 @@
  * @copyright       Hervé Thouzard (http://www.herve-thouzard.com)
  * @license         http://www.gnu.org/licenses/gpl-2.0.html GNU Public License
  * @package         boox
- * @author 			Hervé Thouzard (http://www.herve-thouzard.com)
+ * @author          Hervé Thouzard (http://www.herve-thouzard.com)
  *
- * Version : $Id:
  * ****************************************************************************
  */
 
-if (!defined('XOOPS_ROOT_PATH')) {
-    die("XOOPS root path not defined");
-}
+// defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
 
-$modversion['name'] = _MI_BOOX_NAME;
-$modversion['version'] = 1.71;
-$modversion['description'] = _MI_BOOX_DESC;
-$modversion['credits'] = 'wilson';
-$modversion['author'] = 'Hervé Thouzard (http://www.herve-thouzard.com)';
-$modversion['license'] = 'GNU GPL 2.0';
-$modversion['license_url'] = "www.gnu.org/licenses/gpl-2.0.html/";
-$modversion['help'] = 'page=help';
-$modversion['official'] = 0;
-$modversion['image'] = 'images/boox_logo.png';
-$modversion['dirname'] = 'boox';
+$modversion['version']       = 1.73;
+$modversion['module_status'] = 'Beta 1';
+$modversion['release_date']  = '2014/04/23';
+$modversion['name']          = _MI_BOOX_NAME;
+$modversion['description']   = _MI_BOOX_DESC;
+$modversion['credits']       = 'wilson';
+$modversion['author']        = 'Hervé Thouzard (http://www.herve-thouzard.com)';
+$modversion['license']       = 'GNU GPL 2.0';
+$modversion['license_url']   = 'www.gnu.org/licenses/gpl-2.0.html';
+$modversion['help']          = 'page=help';
+$modversion['official']      = 0; //1 indicates supported by XOOPS Dev Team, 0 means 3rd party supported
+$modversion['image']         = 'assets/images/logoModule.png';
+$modversion['dirname']       = basename(__DIR__);
 
-$modversion['official'] = 0;
-$modversion['dirmoduleadmin'] = '/Frameworks/moduleclasses/moduleadmin';
-$modversion['icons16'] = '../../Frameworks/moduleclasses/icons/16';
-$modversion['icons32'] = '../../Frameworks/moduleclasses/icons/32';
+//$modversion['dirmoduleadmin'] = '/Frameworks/moduleclasses/moduleadmin';
+//$modversion['icons16']        = '../../Frameworks/moduleclasses/icons/16';
+//$modversion['icons32']        = '../../Frameworks/moduleclasses/icons/32';
+$modversion['modicons16'] = 'assets/images/icons/16';
+$modversion['modicons32'] = 'assets/images/icons/32';
 
 //about
-$modversion["demo_site_url"] = '';
-$modversion["demo_site_name"] = '';
-$modversion["module_website_url"] = 'http://xoops.org';
-$modversion["module_website_name"] = 'XOOPS';
-$modversion["release"] = '0';
-$modversion["module_status"] = 'Final';
-$modversion['release_date'] = '2012/06/27';
-$modversion['min_php'] = '5.2';
-$modversion['min_xoops'] = '2.5.5';
-$modversion['min_admin']='1.1';
-//$modversion['min_db']= array('mysql'=>'5.0.7', 'mysqli'=>'5.0.7');
+$modversion['demo_site_url']       = '';
+$modversion['demo_site_name']      = '';
+$modversion['module_website_url']  = 'https://xoops.org';
+$modversion['module_website_name'] = 'XOOPS';
+$modversion['release']             = '0';
+$modversion['min_php']             = '5.5';
+$modversion['min_xoops']           = '2.5.9';
+$modversion['min_admin']           = '1.2';
+$modversion['min_db']              = array('mysql' => '5.5');
 
 $modversion['sqlfile']['mysql'] = '';
 
 // Admin things
-$modversion['hasAdmin'] = 1;
-$modversion['adminindex'] = 'admin/index.php';
-$modversion['adminmenu'] = 'admin/menu.php';
+$modversion['hasAdmin']    = 1;
+$modversion['adminindex']  = 'admin/index.php';
+$modversion['adminmenu']   = 'admin/menu.php';
 $modversion['system_menu'] = 1;
 
 // Templates
@@ -78,38 +76,38 @@ $modversion['hasComments'] = 0;
 /**
  * Where do you want to save your files ?
  */
-$i=0;
-$modversion['config'][$i]['name'] = 'foldertosave';
-$modversion['config'][$i]['title'] = '_MI_BOOX_OPT0';
+$i                                       = 0;
+$modversion['config'][$i]['name']        = 'foldertosave';
+$modversion['config'][$i]['title']       = '_MI_BOOX_OPT0';
 $modversion['config'][$i]['description'] = '_MI_BOOX_OPT0_DSC';
-$modversion['config'][$i]['formtype'] = 'textbox';
-$modversion['config'][$i]['valuetype'] = 'text';
-$modversion['config'][$i]['default'] = XOOPS_UPLOAD_PATH;
+$modversion['config'][$i]['formtype']    = 'textbox';
+$modversion['config'][$i]['valuetype']   = 'text';
+$modversion['config'][$i]['default']     = XOOPS_UPLOAD_PATH . '/' . $modversion['dirname'];
 
 /**
  * Which editor to use ?
  */
-$i++;
-$modversion['config'][$i]['name'] = 'form_options';
-$modversion['config'][$i]['title'] = "_MI_BOOX_FORM_OPTIONS";
+++$i;
+$modversion['config'][$i]['name']        = 'form_options';
+$modversion['config'][$i]['title']       = '_MI_BOOX_FORM_OPTIONS';
 $modversion['config'][$i]['description'] = '';
-$modversion['config'][$i]['formtype'] = 'select';
-$modversion['config'][$i]['valuetype'] = 'text';
-$modversion['config'][$i]['default'] = 'dhtml';
+$modversion['config'][$i]['formtype']    = 'select';
+$modversion['config'][$i]['valuetype']   = 'text';
+$modversion['config'][$i]['default']     = 'dhtml';
 xoops_load('xoopseditorhandler');
-$editor_handler = XoopsEditorHandler::getInstance();
-$modversion['config'][$i]['options'] = array_flip($editor_handler->getList());
+$editorHandler                       = XoopsEditorHandler::getInstance();
+$modversion['config'][$i]['options'] = array_flip($editorHandler->getList());
 
 /**
  * Trim file's content before to save it ?
  */
-$i++;
-$modversion['config'][$i]['name'] = 'trimcontent';
-$modversion['config'][$i]['title'] = '_MI_BOOX_OPT1';
+++$i;
+$modversion['config'][$i]['name']        = 'trimcontent';
+$modversion['config'][$i]['title']       = '_MI_BOOX_OPT1';
 $modversion['config'][$i]['description'] = '_MI_BOOX_OP1_DSC';
-$modversion['config'][$i]['formtype'] = 'yesno';
-$modversion['config'][$i]['valuetype'] = 'int';
-$modversion['config'][$i]['default'] = 0;
+$modversion['config'][$i]['formtype']    = 'yesno';
+$modversion['config'][$i]['valuetype']   = 'int';
+$modversion['config'][$i]['default']     = 0;
 
 // Notifications
 $modversion['hasNotification'] = 0;
