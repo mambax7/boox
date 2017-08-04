@@ -4,7 +4,7 @@
            href="<{$xoops_url}>/modules/boox/admin/index.php"
            title="Back to the administration of Boox"> Boox <img
                 src="<{xoAdminIcons home.png}>"
-                alt="Back to the Administration of Boox"/>
+                alt="Back to the Administration of Boox">
         </a></h1>
 
     <h4 class="odd">DESCRIPTION</h4><br>
