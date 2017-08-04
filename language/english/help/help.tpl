@@ -1,13 +1,7 @@
 <div id="help-template" class="outer">
-    <h1 class="head">Help:
-        <a class="ui-corner-all tooltip"
-           href="<{$xoops_url}>/modules/boox/admin/index.php"
-           title="Back to the administration of Boox"> Boox <img
-                src="<{xoAdminIcons home.png}>"
-                alt="Back to the Administration of Boox">
-        </a></h1>
+    <{include file=$smarty.const._MI_CHAT_HELP_HEADER}>
 
-    <h4 class="odd">DESCRIPTION</h4><br>
+    <h4 class="odd">DESCRIPTION</h4> <br>
 
     Boox (Blocks Out Of Xoops) is a module which is to help you to manage content that Xoops can't access but which is
     part of your site.<br><br>

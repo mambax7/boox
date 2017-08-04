@@ -21,27 +21,21 @@
 
 // defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
 
-$modversion['version']       = 1.73;
-$modversion['module_status'] = 'Beta 1';
-$modversion['release_date']  = '2014/04/23';
-$modversion['name']          = _MI_BOOX_NAME;
-$modversion['description']   = _MI_BOOX_DESC;
-$modversion['credits']       = 'wilson';
-$modversion['author']        = 'Hervé Thouzard (http://www.herve-thouzard.com)';
-$modversion['license']       = 'GNU GPL 2.0';
-$modversion['license_url']   = 'www.gnu.org/licenses/gpl-2.0.html';
-$modversion['help']          = 'page=help';
-$modversion['official']      = 0; //1 indicates supported by XOOPS Dev Team, 0 means 3rd party supported
-$modversion['image']         = 'assets/images/logoModule.png';
-$modversion['dirname']       = basename(__DIR__);
-
-//$modversion['dirmoduleadmin'] = '/Frameworks/moduleclasses/moduleadmin';
-//$modversion['icons16']        = '../../Frameworks/moduleclasses/icons/16';
-//$modversion['icons32']        = '../../Frameworks/moduleclasses/icons/32';
-$modversion['modicons16'] = 'assets/images/icons/16';
-$modversion['modicons32'] = 'assets/images/icons/32';
-
-//about
+$modversion['version']             = 1.73;
+$modversion['module_status']       = 'Beta 1';
+$modversion['release_date']        = '2017/07/20';
+$modversion['name']                = _MI_BOOX_NAME;
+$modversion['description']         = _MI_BOOX_DESC;
+$modversion['credits']             = 'wilson';
+$modversion['author']              = 'Hervé Thouzard (http://www.herve-thouzard.com)';
+$modversion['license']             = 'GNU GPL 2.0';
+$modversion['license_url']         = 'www.gnu.org/licenses/gpl-2.0.html';
+$modversion['help']                = 'page=help';
+$modversion['official']            = 0; //1 indicates supported by XOOPS Dev Team, 0 means 3rd party supported
+$modversion['image']               = 'assets/images/logoModule.png';
+$modversion['dirname']             = basename(__DIR__);
+$modversion['modicons16']          = 'assets/images/icons/16';
+$modversion['modicons32']          = 'assets/images/icons/32';
 $modversion['demo_site_url']       = '';
 $modversion['demo_site_name']      = '';
 $modversion['module_website_url']  = 'https://xoops.org';
@@ -60,6 +54,13 @@ $modversion['adminindex']  = 'admin/index.php';
 $modversion['adminmenu']   = 'admin/menu.php';
 $modversion['system_menu'] = 1;
 
+// ------------------- Help files ------------------- //
+$modversion['helpsection'] = array(
+    ['name' => _MI_CHAT_OVERVIEW, 'link' => 'page=help'],
+    ['name' => _MI_CHAT_DISCLAIMER, 'link' => 'page=disclaimer'],
+    ['name' => _MI_CHAT_LICENSE, 'link' => 'page=license'],
+    ['name' => _MI_CHAT_SUPPORT, 'link' => 'page=support'],
+);
 // Templates
 
 // Blocks

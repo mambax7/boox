@@ -36,3 +36,16 @@ define('_MI_BOOX_OPT1_DSC', 'Spaces will be removed before the file is saved');
 define('_MI_BOOX_MENU_00', 'Home');
 define('_MI_BOOX_MENU_01', 'Boox Manager');
 define('_MI_BOOX_ADMIN_ABOUT', 'About');
+
+//Help
+define('_MI_CHAT_DIRNAME', basename(dirname(dirname(__DIR__))));
+define('_MI_CHAT_HELP_HEADER', __DIR__.'/help/helpheader.tpl');
+define('_MI_CHAT_BACK_2_ADMIN', 'Back to Administration of ');
+define('_MI_CHAT_OVERVIEW', 'Overview');
+
+//define('_MI_CHAT_HELP_DIR', __DIR__);
+
+//help multi-page
+define('_MI_CHAT_DISCLAIMER', 'Disclaimer');
+define('_MI_CHAT_LICENSE', 'License');
+define('_MI_CHAT_SUPPORT', 'Support');
