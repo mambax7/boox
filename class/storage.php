@@ -19,7 +19,7 @@
  * ****************************************************************************
  */
 
-// defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
+// defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 
 /**
  * Class boox_storage
@@ -39,7 +39,7 @@ class boox_storage
      */
     public function getAllFiles()
     {
-        $ret  = $tbl_files_list = array();
+        $ret  = $tbl_files_list = [];
         $myts = MyTextSanitizer::getInstance();
         if (file_exists($this->filename)) {
             require_once $this->filename;

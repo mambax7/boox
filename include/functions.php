@@ -19,7 +19,7 @@
  * ****************************************************************************
  */
 
-// defined('XOOPS_ROOT_PATH') || exit('XOOPS root path not defined');
+// defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 
 /**
  * Returns a module's option
@@ -39,7 +39,7 @@
 function boox_getmoduleoption($option, $repmodule = 'boox')
 {
     global $xoopsModuleConfig, $xoopsModule;
-    static $tbloptions = array();
+    static $tbloptions = [];
     if (is_array($tbloptions) && array_key_exists($option, $tbloptions)) {
         return $tbloptions[$option];
     }
@@ -98,7 +98,7 @@ function boox_isX23()
 function boox_getWysiwygForm($caption, $name, $value = '', $width = '100%', $height = '400px', $supplemental = '')
 {
     $editor                   = false;
-    $editor_configs           = array();
+    $editor_configs           = [];
     $editor_configs['name']   = $name;
     $editor_configs['value']  = $value;
     $editor_configs['rows']   = 35;
@@ -135,13 +135,13 @@ function boox_getWysiwygForm($caption, $name, $value = '', $width = '100%', $hei
         case 'tinymce':
             if (is_readable(XOOPS_ROOT_PATH . '/class/xoopseditor/tinyeditor/formtinyeditortextarea.php')) {
                 require_once XOOPS_ROOT_PATH . '/class/xoopseditor/tinyeditor/formtinyeditortextarea.php';
-                $editor = new XoopsFormTinyeditorTextArea(array(
+                $editor = new XoopsFormTinyeditorTextArea([
                                                               'caption' => $caption,
                                                               'name'    => $name,
                                                               'value'   => $value,
                                                               'width'   => '100%',
                                                               'height'  => '400px'
-                                                          ));
+                                                          ]);
             }
             break;
         case 'koivi':

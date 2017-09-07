@@ -20,10 +20,10 @@
  * ****************************************************************************
  */
 
-require_once __DIR__ . '/../../../include/cp_header.php';
+require_once __DIR__ . '/admin_header.php';
 require_once XOOPS_ROOT_PATH . '/modules/boox/include/functions.php';
 require_once XOOPS_ROOT_PATH . '/modules/boox/class/storage.php';
-require_once __DIR__ . '/admin_header.php';
+
 
 $adminObject = \Xmf\Module\Admin::getInstance();
 
@@ -143,7 +143,7 @@ switch ($op) {
         $adminObject->displayButton('left', '');
 
         echo '<h4>' . _AM_BOOX_FILES . '</h4>';
-        $files = array();
+        $files = [];
         $files = $storage->getAllFiles();
         echo '<table border="0" align="center" width="95%">';
         echo '<tr>';
