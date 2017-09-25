@@ -44,7 +44,7 @@ class boox_storage
         if (file_exists($this->filename)) {
             require_once $this->filename;
             foreach ($tbl_files_list as $onefile) {
-                if (xoops_trim($onefile) != '') {
+                if ('' != xoops_trim($onefile)) {
                     $onefile       = $myts->htmlSpecialChars($onefile);
                     $ret[$onefile] = $onefile;
                 }

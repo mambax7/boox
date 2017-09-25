@@ -46,7 +46,7 @@ function edit_file_content($content = '', $filename = '')
 {
     require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
     $sform = new XoopsThemeForm(_AM_BOOX_FILE, 'ffile', XOOPS_URL . '/modules/boox/admin/main.php', 'post', true);
-    if (xoops_trim($filename) != '') {
+    if ('' != xoops_trim($filename)) {
         $sform->addElement(new XoopsFormHidden('filename', $filename), false);
     } else {
         $sform->addElement(new XoopsFormText(_AM_BOOX_FILENAME, 'filename', 50, 255, $filename), true);
@@ -77,7 +77,7 @@ switch ($op) {
             redirect_header('main.php', 3, _AM_BOOX_ERROR1);
         }
 
-        if (substr($folder_storage, -1, 1) != '/') {
+        if ('/' != substr($folder_storage, -1, 1)) {
             $folder_storage .= '/';
         }
         $filename = $_POST['filename'];
@@ -106,7 +106,7 @@ switch ($op) {
             redirect_header('main.php', 3, _AM_BOOX_ERROR1);
         }
         $folder_storage = xoops_trim(boox_getmoduleoption('foldertosave'));
-        if (substr($folder_storage, -1, 1) != '/') {
+        if ('/' != substr($folder_storage, -1, 1)) {
             $folder_storage .= '/';
         }
         $filename = $_GET['filename'];
@@ -125,7 +125,7 @@ switch ($op) {
         $storage->delete($filename);
         $storage->store();
         $folder_storage = xoops_trim(boox_getmoduleoption('foldertosave'));
-        if (substr($folder_storage, -1, 1) != '/') {
+        if ('/' != substr($folder_storage, -1, 1)) {
             $folder_storage .= '/';
         }
         @unlink($folder_storage . $filename);
@@ -134,7 +134,7 @@ switch ($op) {
 
     default:        // Default action, list existing files
         $folder_storage = xoops_trim(boox_getmoduleoption('foldertosave'));
-        if (substr($folder_storage, -1, 1) != '/') {
+        if ('/' != substr($folder_storage, -1, 1)) {
             $folder_storage .= '/';
         }
         xoops_cp_header();
@@ -153,7 +153,7 @@ switch ($op) {
         echo '</tr>';
         $class = '';
         foreach ($files as $file) {
-            $class         = ($class == 'even') ? 'odd' : 'even';
+            $class         = ('even' == $class) ? 'odd' : 'even';
             $action_edit   = '<a title="' . _EDIT . '" href="main.php?op=edit&filename=' . urlencode($file) . '"><img border="0" src="../assets/images/edit.gif"></a>';
             $action_delete = '<a ' . boox_JavascriptLinkConfirm(_AM_BOOX_CONFIRM) . ' title="' . _DELETE . '" href="main.php?op=delete&filename=' . urlencode($file) . '"><img border="0" src="../assets/images/delete.gif"></a>';
             $command       = "<{php}>require_once __DIR__ . '/" . $folder_storage . $file . "';<{/php}>";
@@ -163,7 +163,7 @@ switch ($op) {
             echo "<td align='center'>" . $action_edit . ' ' . $action_delete . '</td>';
             echo '</tr>';
         }
-        $class = ($class == 'even') ? 'odd' : 'even';
+        $class = ('even' == $class) ? 'odd' : 'even';
         //echo "<tr class='".$class."'><td colspan='3' align='center'><br><form method='post' name='fadd' id='fadd' action='main.php'><input type='hidden' name='op' value='addfile'><input type='submit' name='btngo' value='"._AM_BOOX_ADD."'></form><br></td></tr>";
         echo '</table><br>';
 
